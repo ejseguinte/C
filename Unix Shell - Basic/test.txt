@@ -1,0 +1,6 @@
+a.out
+csc60mshell.c
+redir.c
+testexecvp.c
+test.txt
+waitpid.c

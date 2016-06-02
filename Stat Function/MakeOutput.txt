@@ -1,0 +1,54 @@
+Script started on Mon 05 Oct 2015 12:53:58 PM PDT
+[seguinte@athena:21]> make
+make: Nothing to be done for `all'.
+[seguinte@athena:22]> vi csc60_sts[Kat_make_file.c
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;32r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[32;1H"csc60_stat_make_file.c" 99L, 3937C[>c[1;5H}[3;5Hprintf([31m" Device: [m[35m%lx[m[31mah/[m[35m%ld[m[31md"[m,[4;17H([32mlong[m) major(sb->st_dev)+[31m1[m, ([32mlong[m) minor(sb->st_dev));[6;5Hprintf([31m"    Inode: [m[35m%ld[m[31m"[m, ([32mlong[m) sb->st_ino);
+    printf([31m"    Links:   [m[35m%ld\n[m[31m"[m, ([32mlong[m) sb->st_nlink);[9;5H[33mif[m (sb->st_mode & (S_ISUID | S_ISGID | S_ISVTX))[10;9Hprintf([31m"    special bits set:     [m[35m%s%s%s\n[m[31m"[m,[11;17H(sb->st_mode & S_ISUID) ? [31m"set-UID "[m : [31m"04000"[m,[12;17H(sb->st_mode & S_ISGID) ? [31m"set-GID "[m : [31m"02000"[m,[13;17H(sb->st_mode & S_ISVTX) ? [31m"sticky "[m : [31m"01000"[m);[15;5Hprintf([31m" Access:  ([m[35m%4o[m[31m"[m,[34m//fixed octal code[m[16;14Hsb->st_mode & [35m0[m[31m07777[m);
+    printf((S_ISDIR(sb->st_mode)) ? [31m"d"[m : [31m"-"[m);
+    printf([31m"[m[35m%s[m[31m)"[m, filePermStr(sb->st_mode, [31m0[m));[20;5Hprintf([31m"   UID:([m[35m%ld[m[31m/[m[35m%s[m[31m)   GID:([m[35m%ld[m[31m/[m[35m%s[m[31m)[m[35m\n[m[31m"[m,[21;13H([32mlong[m) sb->st_uid, pwd->pw_name, ([32mlong[m) sb->st_gid, grp->gr_name);[23;5H[33mif[m (S_ISCHR(sb->st_mode) || S_ISBLK(sb->st_mode))[24;9Hprintf([31m"Device number (st_rdev):  major=[m[35m%ld[m[31m; minor=[m[35m%ld\n[m[31m"[m,[25;17H([32mlong[m) major(sb->st_rdev), ([32mlong[m) minor(sb->st_rdev));
+    [32mchar[m buf[[31m200[m];
+    strftime(buf,[33msizeof[m(buf),[31m"Access:%Y-%m-[m[35m%d[m[31m %T %z[m[35m\n[m[31m"[m, localtime(&sb->st_atime));
+    printf([31m" [m[35m%s[m[31m"[m,buf);
+    strftime(buf,[33msizeof[m(buf),[31m"Modify:%Y-%m-[m[35m%d[m[31m %T %z[m[35m\n[m[31m"[m, localtime(&sb->st_mtime));
+    printf([31m" [m[35m%s[m[31m"[m,buf);
+    strftime(buf,[33msizeof[m(buf),[31m"Change:%Y-%m-[m[35m%d[m[31m %T %z[m[35m\n[m[31m"[m, localtime(&sb->st_ctime));[32;108H53,14[9C54%[16;14H[?12l[?25h[?25l[32;109H2[15;14H[?12l[?25h[?25l[32;112H5[15;15H[?12l[?25h[?25l[32;112H6[15;16H[?12l[?25h[?25l[32;112H7[15;17H[?12l[?25h[?25l[32;112H8[15;18H[?12l[?25h[?25l[32;112H9[15;19H[?12l[?25h[?25l[32;111H20[15;20H[?12l[?25h[?25l[32;112H1[15;21H[?12l[?25h[?25l[32;112H2[15;22H[?12l[?25h[?25l[1C[31m[46m([m[16;34H[46m)[m[32;112H3[15;23H[?12l[?25h[?25l[31m([m[16;34H)[32;112H4[15;24H[?12l[?25h[?25l[32;112H5[15;25H[?12l[?25h[?25l[32;112H6[15;26H[?12l[?25h[?25l[32;112H7[15;27H[?12l[?25h[?25l[32;112H8[15;28H[?12l[?25h[?25l[32;112H9[15;29H[?12l[?25h[?25l[32;111H30[15;30H[?12l[?25h[?25l[32;112H1[15;31H[?12l[?25h[?25l[32;112H2[15;32H[?12l[?25h[?25l[32;112H3[15;33H[?12l[?25h[?25l[32;112H4[15;34H[?12l[?25h[?25l[32;112H5[15;35H[?12l[?25h[?25l[32;112H6[15;36H[?12l[?25h[?25l[32;112H7[15;37H[?12l[?25h[?25l[32;112H8[15;38H[?12l[?25h[?25l[32;112H9[15;39H[?12l[?25h[?25l[32;111H40[15;40H[?12l[?25h[?25l[32;112H1[15;41H[?12l[?25h[?25l[32;112H2[15;42H[?12l[?25h[?25l[32;112H3[15;43H[?12l[?25h[?25l[32;112H4[15;44H[?12l[?25h[?25l[32;112H5[15;45H[?12l[?25h[?25l[32;112H6[15;46H[?12l[?25h[?25l[32;1H[1m-- INSERT --[m[32;13H[K[32;108H52,46[9C54%[15;46H[?12l[?25h[?25l[32;112H7[15;47H[?12l[?25h[?25l[15;46H[K[32;112H6[15;46H[?12l[?25h[?25l[15;45H[K[32;112H5[15;45H[?12l[?25h[?25l[15;44H[K[32;112H4[15;44H[?12l[?25h[?25l[15;43H[K[32;112H3[15;43H[?12l[?25h[?25l[15;42H[K[32;112H2[15;42H[?12l[?25h[?25l[15;41H[K[32;112H1[15;41H[?12l[?25h[?25l[15;40H[K[32;112H0[15;40H[?12l[?25h[?25l[15;39H[K[32;111H39[15;39H[?12l[?25h[?25l[15;38H[K[32;112H8[15;38H[?12l[?25h[?25l[15;37H[K[32;112H7[15;37H[?12l[?25h[?25l[15;36H[K[32;112H6[15;36H[?12l[?25h[?25l[15;35H[K[32;112H5[15;35H[?12l[?25h[?25l[15;34H[K[32;112H4[15;34H[?12l[?25h[?25l[15;33H[K[32;112H3[15;33H[?12l[?25h[?25l[15;32H[K[32;112H2[15;32H[?12l[?25h[?25l[15;31H[K[32;112H1[15;31H[?12l[?25h[?25l/[15;30H[K[32;112H0[15;30H[?12l[?25h[?25l[15;29H[K[32;111H29[15;29H[?12l[?25h[?25l:[32;111H30[15;30H[?12l[?25h[?25l[15;29H[K[32;111H29[15;29H[?12l[?25h[32;1H[K[15;28H[?25l[32;108H52,28[9C54%[15;28H[?12l[?25h[?25l[32;108H[K[32;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"csc60_stat_make_file.c" 99L, 3919C written
+[?1l>[?12l[?25h[?1049l[seguinte@athena:23]> vi csc60_stat_make_file.c[23Gmake[K
+gcc -g -Wall -c csc60_stat_make_file.c
+gcc file_perms.o error_functions.o csc60_stat_make_file.o -o csc60_stat
+[seguinte@athena:24]> vi[K[Kmakevi csc60_stat_make_file.c[23Gexit[Kvi file_perms.h
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;32r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[32;1H"file_perms.h" 25L, 1052C[>c[1;1H[34m/*************************************************************************\
+ * *                  Copyright (C) Michael Kerrisk, 2014.                   *
+ * *                                                                         *
+ * * This program is free software. You may use, modify, and redistribute it *
+ * * under the terms of the GNU Lesser General Public License as published   *
+ * * by the Free Software Foundation, either version 3 or (at your option)   *
+ * * any later version. This program is distributed without any warranty.    *
+ * * See the files COPYING.lgpl-v3 and COPYING.gpl-v3 for details.           *
+ * \*************************************************************************/
+
+/* file_perms.h
+ *
+ *    Header file for file_perms.c.
+ *    */[m
+[35m#ifndef FILE_PERMS_H[m[34m//Edit[m
+[35m#define FILE_PERMS_H
+
+#include [m[31m<sys/types.h>[m
+
+[35m#define FP_SPECIAL [m[31m1[m[35m            [m[34m/* Include set-user-ID, set-group-ID, and sticky
+                                   bit information in returned string */[m
+
+[32mchar[m *filePermStr(mode_t perm, [32mint[m flags);
+
+[35m#endif[m
+[1m[34m~                                                                                                                            [27;1H~                                                                                                                            [28;1H~                                                                                                                            [29;1H~                                                                                                                            [30;1H~                                                                                                                            [31;1H~                                                                                                                            [m[32;108H15,1[10CAll[15;1H[?12l[?25h[?25l[32;109H6[16;1H[?12l[?25h[?25l[32;109H7,0-1[17;1H[?12l[?25h[?25l[32;109H6,1  [16;1H[?12l[?25h[?25l[32;109H5[15;1H[?12l[?25h[?25l[32;111H2[15;2H[?12l[?25h[?25l[32;111H3[15;3H[?12l[?25h[?25l[32;111H4[15;4H[?12l[?25h[?25l[32;111H5[15;5H[?12l[?25h[?25l[32;111H6[15;6H[?12l[?25h[?25l[32;111H7[15;7H[?12l[?25h[?25l[32;111H8[15;8H[?12l[?25h[?25l[32;111H9[15;9H[?12l[?25h[?25l[32;111H10[15;10H[?12l[?25h[?25l[32;112H1[15;11H[?12l[?25h[?25l[32;112H2[15;12H[?12l[?25h[?25l[32;112H3[15;13H[?12l[?25h[?25l[32;112H4[15;14H[?12l[?25h[?25l[32;112H5[15;15H[?12l[?25h[?25l[32;112H6[15;16H[?12l[?25h[?25l[32;112H7[15;17H[?12l[?25h[?25l[32;112H8[15;18H[?12l[?25h[?25l[32;112H9[15;19H[?12l[?25h[?25l[32;111H20[15;20H[?12l[?25h[?25l[32;112H1[15;21H[?12l[?25h[?25l[32;112H2[15;22H[?12l[?25h[?25l[32;112H3[15;23H[?12l[?25h[?25l[32;112H4[15;24H[?12l[?25h[?25l[32;112H5[15;25H[?12l[?25h[?25l[32;112H6[15;26H[?12l[?25h[?25l[32;1H[1m-- INSERT --[m[32;13H[K[32;108H15,26[9CAll[15;26H[?12l[?25h[?25l[32;112H7[15;27H[?12l[?25h[?25l[15;26H[K[32;112H6[15;26H[?12l[?25h[?25l[15;25H[K[32;112H5[15;25H[?12l[?25h[?25l[15;24H[K[32;112H4[15;24H[?12l[?25h[?25l[15;23H[K[32;112H3[15;23H[?12l[?25h[?25l[35m/[m[15;22H[K[32;112H2[15;22H[?12l[?25h[?25l[15;21H[K[32;112H1[15;21H[?12l[?25h[32;1H[K[15;20H[?25l[32;108H15,20[9CAll[15;20H[?12l[?25h[?25l[32;108H[K[32;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l"file_perms.h" 25L, 1046C written
+[?1l>[?12l[?25h[?1049l[seguinte@athena:25]> vi file_perms.h[23Gmake[K
+gcc -g -Wall -c file_perms.c
+gcc -g -Wall -c csc60_stat_make_file.c
+gcc file_perms.o error_functions.o csc60_stat_make_file.o -o csc60_stat
+[seguinte@athena:26]> make
+make: Nothing to be done for `all'.
+[seguinte@athena:27]> exit
+exit
+
+Script done on Mon 05 Oct 2015 12:55:01 PM PDT

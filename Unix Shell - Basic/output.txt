@@ -1,0 +1,1126 @@
+Script started on Wed 28 Oct 2015 11:12:33 PM PDT
+[seguinte@sp1:21]> make
+gcc -g -Wall -c csc60mshell.c
+gcc csc60mshell.o -o a.out
+[seguinte@sp1:22]> a.out
+csc60mshell> ls l>ll.ou    s.out^[[D^[[D^[[D            4         > ls.out
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> ll
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> gcc   vi ls.c
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"ls.c" 19L, 611C[1;1H/* Program to demo a dup2 system call for I/O redirection */
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+int main (int argc, char *argv[])
+{
+  if (argc == 1) { printf("Usage: redir <filename.txt>\n"); return 0; }
+  int fileId = open(argv[1],O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+  if( fileId < 0 )  {[10;6Hprintf( "error creating file \n" );[11;6Hreturn (1);
+  }
+  printf("About to run ls\n");
+  dup2( fileId, 1); /* copy fileID to stdout */
+  close( fileId ); /* close fileId - no longer need */
+  char *cmd[] = {"ls",0 };
+  execvp(cmd[0], cmd);
+  return 0;
+}
+[1m[34m~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1HEntering Ex mode.  Type "visual" to go to Normal mode.[?12l[?25h
+:q
+[?1l>[?1049lChild returned status: 0
+csc60mshell> ll
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> pwd
+/gaia/class/student/seguinte/CSC060/lab4
+csc60mshell> cat foo.txt
+a.out
+csc60mshell.c
+redir.c
+testexecvp.c
+test.txt
+waitpid.c
+Child returned status: 0
+csc60mshell> ls
+a.out	       final.txt  ls.c	    output.txt	typescript
+csc60mshell.c  foo1.txt   ls.out    out.txt
+csc60mshell.o  foo.txt	  makefile  test.txt
+Child returned status: 0
+csc60mshell> ls >ls.out
+ls: cannot access >ls.out: No such file or directory
+Child returned status: 512
+csc60mshell> ^[[A    ls > ls.out
+Child returned status: 0
+csc60mshell> cd /usr/bin
+csc60mshell> pwd
+/usr/bin
+csc60mshell> ls
+[				       modutil
+a2p				       mousetweaks
+ab				       mozilla-plugin-config
+abrt-action-analyze-backtrace	       mp2bug
+abrt-action-analyze-c		       mpartition
+abrt-action-analyze-ccpp-local	       mpstat
+abrt-action-analyze-core	       mrd
+abrt-action-analyze-oops	       mren
+abrt-action-analyze-python	       msgattrib
+abrt-action-generate-backtrace	       msgcat
+abrt-action-generate-core-backtrace    msgcmp
+abrt-action-install-debuginfo	       msgcomm
+abrt-action-list-dsos		       msgconv
+abrt-action-notify		       msgen
+abrt-action-save-kernel-data	       msgexec
+abrt-action-save-package-data	       msgfilter
+abrt-action-trim-files		       msgfmt
+abrt-applet			       msggrep
+abrt-cli			       msghack
+abrt-cli-root			       msginit
+abrt-dedup-client		       msgmerge
+abrt-dump-oops			       msgunfmt
+abrt-gui			       msguniq
+abrt-gui-root			       mshowfat
+abrt-handle-upload		       ms_print
+ac				       msql2mysql
+aclocal				       mtools
+aclocal-1.11			       mtoolstest
+aconnect			       mtype
+acpi_listen			       mutt
+activation-client		       mxtar
+addftinfo			       my-default-printer
+addr2line			       myisamchk
+afs5log				       myisam_ftdump
+alsa-info			       myisamlog
+alsa-info.sh			       myisampack
+alsaloop			       my_print_defaults
+alsamixer			       mysql
+amidi				       mysqlaccess
+amixer				       mysqladmin
+amuFormat.sh			       mysqlbinlog
+anthy-agent			       mysqlbug
+anthy-dic-tool			       mysqlcheck
+anthy-morphological-analyzer	       mysql_config
+aplay				       mysql_convert_table_format
+aplaymidi			       mysqld_multi
+appletviewer			       mysqld_safe
+apropos				       mysqldump
+apt				       mysqldumpslow
+ar				       mysql_find_rows
+arecord				       mysql_fix_extensions
+arecordmidi			       mysql_fix_privilege_tables
+as				       mysqlhotcopy
+aseqdump			       mysqlimport
+aseqnet				       mysql_install_db
+aserver				       mysql_secure_installation
+aspell				       mysql_setpermission
+assistant_adp			       mysqlshow
+assistant-qt4			       mysqlslap
+at				       mysqltest
+atq				       mysql_tzinfo_to_sql
+atrm				       mysql_upgrade
+attr				       mysql_waitpid
+audit2allow			       mysql_zap
+audit2why			       mzip
+aulast				       nail
+aulastlog			       namei
+ausyscall			       nano
+authconfig			       native2ascii
+authconfig-gtk			       nautilus
+authconfig-tui			       nautilus-autorun-software
+autoconf			       nautilus-connect-server
+autoheader			       nautilus-file-management-properties
+autom4te			       nautilus-sendto
+automake			       nc
+automake-1.11			       needs-restarting
+autopoint			       nenscript
+autoreconf			       neqn
+autoscan			       net
+autoupdate			       netaddr
+auvirt				       net-snmp-create-v3-user
+awk				       newaliases
+b43-fwcutter			       newaliases.postfix
+baobab				       newaliases.sendmail
+base64				       newgrp
+bashbug-64			       nfs4_editfacl
+batch				       nfs4_getfacl
+bc				       nfs4_setfacl
+bdftopcf			       ngettext
+bdftops				       nl
+berkeley_db42_svc		       nm
+berkeley_db43_svc		       nm-applet
+berkeley_db_svc			       nmblookup
+bison				       nmcli
+blkiomon			       nm-connection-editor
+blkparse			       nm-online
+blkrawverify			       nm-tool
+blktrace			       nohup
+bluetooth-applet		       notify-send
+bluetooth-properties		       nproc
+bluetooth-sendto		       nroff
+bluetooth-wizard		       nsenter
+bmp2tiff			       nslookup
+bno_plot.py			       nsupdate
+bonobo-activation-run-query	       ntlm_auth
+brasero				       ntpstat
+btparser			       numactl
+btrace				       numademo
+btrecord			       numastat
+btreplay			       obex-data-server
+btt				       objcopy
+build-classpath			       objdump
+build-classpath-directory	       oclock
+build-jar-repository		       ocs
+bunzip2				       od
+byacc				       odbc_config
+bzcat				       odbcinst
+bzcmp				       oddjob_request
+bzdiff				       ogg123
+bzgrep				       oggdec
+bzip2				       oggenc
+bzip2recover			       ogginfo
+bzless				       oldfind
+bzmore				       on_ac_power
+c++				       oocalc
+c2050				       oodraw
+c2070				       ooffice
+c2ph				       ooimpress
+c89				       oomath
+c99				       ooviewdoc
+cal				       oowriter
+ca-legacy			       open
+calibrate_ppa			       openoffice.org
+callgrind_annotate		       openoffice.org-1.9
+callgrind_control		       openoffice.org-2.0
+canberra-gtk-play		       openssl
+cancel				       openvt
+cancel.cups			       orbd
+captoinfo			       orca
+cas				       over
+cas-admin			       p11-kit
+catchsegv			       pacat
+cc				       pack200
+ccache-swig			       package-cleanup
+cdda2ogg			       packagekit-bugreport.sh
+cdda2wav			       pacmd
+cdda-player			       pactl
+cd-drive			       padsp
+cd-info				       pal2rgb
+cdparanoia			       palimpsest
+cd-paranoia			       pamon
+cdrdao				       pam-panel-icon
+cd-read				       panelctl
+cdrecord			       pango-querymodules-64
+certmaster-getcert		       pango-view
+certutil			       paplay
+certwatch			       paps
+c++filt				       parec
+cg_annotate			       parecord
+cg_diff				       passwd
+cg_merge			       paste
+chacl				       pasuspender
+chage				       patch
+charmap				       pathchk
+chattr				       pax
+chcat				       pax11publish
+chcon				       pbm2l2030
+check-binary-files		       pbm2l7k
+checkmodule			       pbm2lex
+checkpolicy			       pbm2ppa
+cheese				       pbmtpg
+chfn				       pcre-config
+chrt				       pcregrep
+chsh				       pcretest
+chvt				       pdbedit
+ci				       pdf2dsc
+cifsiostat			       pdf2ps
+ciptool				       pdffonts
+cjet				       pdfimages
+cjpeg				       pdfinfo
+ck-history			       pdfopt
+ck-launch-session		       pdftohtml
+ck-list-sessions		       pdftoppm
+cksum				       pdftops
+ck-xinit-session		       pdftotext
+clean-binary-files		       pear
+clear				       peardev
+cloog				       pecl
+clusterdb			       peekfd
+cmp				       perl
+cmsutil				       perl5.10.1
+co				       perlbug
+col				       perldoc
+colcrt				       perlivp
+colrm				       perlthanks
+column				       perror
+combinediff			       pf2afm
+comm				       pfbtopfa
+compile_et			       pfbtops
+compiz				       pgawk
+compiz-gtk			       pg_controldata
+compress-dummy			       pg_ctl
+config_data			       pg_dump
+consolehelper			       pg_dumpall
+consolehelper-gtk		       pgpewrap
+corelist			       pgpring
+cpan				       pgrep
+cpan2dist			       pg_resetxlog
+cpanp				       pg_restore
+cpanp-run-perl			       phar
+cpp				       phar.phar
+cpufreq-selector		       php
+crash				       php-cgi
+create-branching-keyboard	       pic
+createdb			       pic2graph
+create-jar-links		       piconv
+createlang			       pidgin
+createuser			       pidstat
+crlutil				       pilot-addresses
+crontab				       pilot-clip
+cscope				       pilot-csd
+cscope-indexer			       pilot-debugsh
+csplit				       pilot-dedupe
+csslint-0.6			       pilot-dlpsh
+ctags				       pilot-file
+cue2toc				       pilot-foto
+cups-calibrate			       pilot-foto-treo600
+cupstestdsc			       pilot-foto-treo650
+cupstestppd			       pilot-getram
+curl				       pilot-getrom
+cut				       pilot-getromtoken
+cvs				       pilot-hinotes
+cvsbug				       pilot-install-datebook
+cvt				       pilot-install-expenses
+db42_archive			       pilot-install-hinote
+db42_checkpoint			       pilot-install-memo
+db42_deadlock			       pilot-install-netsync
+db42_dump			       pilot-install-todo
+db42_load			       pilot-install-todos
+db42_printlog			       pilot-install-user
+db42_recover			       pilot-memos
+db42_stat			       pilot-nredir
+db42_upgrade			       pilot-read-expenses
+db42_verify			       pilot-read-ical
+db43_archive			       pilot-read-notepad
+db43_checkpoint			       pilot-read-palmpix
+db43_deadlock			       pilot-read-screenshot
+db43_dump			       pilot-read-todos
+db43_load			       pilot-read-veo
+db43_printlog			       pilot-reminders
+db43_recover			       pilot-schlep
+db43_stat			       pilot-wav
+db43_upgrade			       pilot-xfer
+db43_verify			       pinentry
+db_archive			       pinentry-curses
+db_checkpoint			       pinentry-gtk
+db_codegen			       pinentry-gtk-2
+db_deadlock			       pinfo
+db_dump				       pinky
+db_dump185			       pitchplay
+db_hotbackup			       pk12util
+dbilogstrip			       pkaction
+dbiprof				       pkcheck
+dbiproxy			       pkcon
+db_load				       pkexec
+db_printlog			       pkg-config
+db_recover			       pkgenpack
+db_stat				       pkill
+db_upgrade			       pkmon
+dbus-binding-tool		       pl2pm
+dbus-launch			       plutil
+dbusxx-introspect		       plutil-1.2
+dbusxx-xml2cpp			       plymouth
+db_verify			       plymouth-log-viewer
+dc				       pmap
+ddate				       pm-is-supported
+deallocvt			       pm-utils-bugreport-info.sh
+debuginfo-install		       pnm2ppa
+dehtmldiff			       pod2html
+desktop-effects			       pod2latex
+desktop-file-install		       pod2man
+desktop-file-validate		       pod2text
+detect_ppa			       pod2usage
+devdump				       podchecker
+devkit-power			       podselect
+dfutool				       pointer-capture-applet
+diff				       policyeditor.itweb
+diff3				       policytool
+diff-jars			       POST
+diffpp				       postgres
+diffstat			       post-grohtml
+dig				       postmaster
+dir				       poweroff
+dircolors			       ppdc
+dirname				       ppdhtml
+djpeg				       ppdi
+dltest				       ppdmerge
+dmxaddinput			       ppdpo
+dmxaddscreen			       ppl-config
+dmxinfo				       ppm2tiff
+dmxreconfig			       pr
+dmxresize			       precat
+dmxrminput			       pre-grohtml
+dmxrmscreen			       preunzip
+dmxtodmx			       prezip
+dmxwininfo			       prezip-bin
+doveadm				       printafm
+doveconf			       printenv
+doxygen				       printf
+doxytag				       procmail
+dprofpp				       profiles
+drill				       protoize
+dropdb				       prove
+droplang			       proxy
+dropuser			       ps2ascii
+dsync				       ps2epsi
+dtrace				       ps2pdf
+du				       ps2pdf12
+dumphint			       ps2pdf13
+dumpiso				       ps2pdf14
+dvcont				       ps2pdfwr
+dvd-ram-control			       ps2ps
+dvdrecord			       ps2ps2
+dvd+rw-booktype			       psbook
+dvd+rw-format			       psed
+dvd+rw-mediainfo		       psfaddtable
+dvipdf				       psfgettable
+dwell-click-applet		       psfstriptable
+ecj				       psfxtable
+edid-decode			       psnup
+editdiff			       pspell-config
+eject				       psql
+ekiga				       psresize
+ekiga-config-tool		       psselect
+ekiga-helper			       pstack
+elinks				       pstops
+enc2xs				       pstree
+enchant				       pstree.x11
+enchant-lsmod			       pstruct
+enscript			       ptar
+env				       ptardiff
+envsubst			       ptx
+eog				       pulseaudio
+eps2eps				       purgestat
+epsffit				       purple-client-example
+eqn				       purple-remote
+eqn2graph			       purple-send
+esc-m				       purple-send-async
+escputil			       purple-url-handler
+espdiff				       pv.sh
+eu-addr2line			       pwdx
+eu-ar				       pydoc
+eu-elfcmp			       pygtk-demo
+eu-elflint			       python
+eu-findtextrel			       python2
+eu-make-debug-archive		       python2.6
+eu-nm				       qdbus
+eu-objdump			       qdbusviewer
+eu-ranlib			       qtconfig-qt4
+eu-readelf			       quota
+eu-size				       quotasync
+eu-stack			       ranlib
+eu-strings			       rapper
+eu-strip			       rarian-example
+eu-unstrip			       rarian-sk-config
+evim				       rarian-sk-extract
+evince				       rarian-sk-gen-uuid
+evince-previewer		       rarian-sk-get-cl
+evince-thumbnailer		       rarian-sk-get-content-list
+evolution			       rarian-sk-get-extended-content-list
+execstack			       rarian-sk-get-scripts
+expand				       rarian-sk-install
+expr				       rarian-sk-migrate
+expresskeys			       rarian-sk-preinstall
+extcheck			       rarian-sk-rebuild
+f95				       rarian-sk-update
+factor				       ras2tiff
+fallocate			       raw2tiff
+fastjar				       rcs
+fax2ps				       rcs2log
+fax2tiff			       rcsclean
+fc-cache			       rcsdiff
+fc-cat				       rcsfreeze
+fc-list				       rcsmerge
+fc-match			       rdate
+fc-query			       rdfproc
+fc-scan				       rdjpgcom
+festival			       readcd
+festival_client			       readelf
+festival_server			       readlink
+festival_server_control		       readmult
+festival-synthesis-driver	       readom
+fgconsole			       reboot
+file				       rebuild-gcj-db
+file-roller			       rebuild-jar-repository
+filterdiff			       recode-sr-latin
+find				       recountdiff
+find2perl			       rediff
+findcon				       redland-db-upgrade
+find-jar			       refer
+find-repos-of-install		       reindexdb
+findsmb				       remsync
+fipscheck			       rename
+fipshmac			       renice
+firefox				       replace
+fixcvsdiff			       replcon
+flac				       repoclosure
+flex				       repodiff
+flex++				       repo-graph
+flipdiff			       repomanage
+flock				       repoquery
+floppy				       repo-rss
+fmt				       report
+fold				       report-cli
+font2c				       reporter-kerneloops
+fonttosfnt			       reporter-mailx
+foomatic-combo-xml		       reporter-print
+foomatic-compiledb		       reporter-rhtsupport
+foomatic-configure		       reporter-upload
+foomatic-datafile		       reporter-ureport
+foomatic-perl-data		       report-gtk
+foomatic-ppdfile		       report-newt
+foomatic-ppd-options		       reposync
+foomatic-ppd-to-xml		       repotrack
+foomatic-printjob		       reset
+foomatic-rip			       resize
+foomatic-searchprinter		       resizecons
+formail				       resolveip
+fprintd-delete			       resolve_stack_dump
+fprintd-enroll			       rev
+fprintd-list			       rfcomm
+fprintd-verify			       rgb2ycbcr
+free				       rhgb-client
+funzip				       rhino
+fusermount			       rhythmbox
+g++				       rhythmbox-client
+g++34				       rlog
+gaim				       rmail
+gawk				       rmail.postfix
+gcalctool			       rmail.sendmail
+gcc				       rmic
+gcc34				       rmid
+gcj				       rmiregistry
+gcj-dbtool			       rnano
+gcjh				       rngtest
+gconf-merge-tree		       roqet
+gconftool-2			       rpcclient
+gcore				       rpcgen
+gcov				       rpm2cpio
+gcov34				       rpmbuild
+gdb				       rpmdb
+gdb-add-index			       rpmquery
+gdbtui				       rpmsign
+gdbus				       rpmverify
+gdk-pixbuf-query-loaders-64	       rsvg
+gdmflexiserver			       rsvg-convert
+gdm-screenshot			       rsvg-view
+gedit				       rsync
+gencat				       runcon
+gendiff				       run-parts
+genisoimage			       run-with-aspell
+genkey				       rvim
+geqn				       s2p
+GET				       sa-awl
+getafm				       sa-check_spamd
+getcert				       sa-compile
+getcifsacl			       sadf
+getconf				       sa-learn
+getent				       sandbox
+getfacl				       sane-find-scanner
+getfattr			       sar
+getkeycodes			       satyr
+getopt				       sa-update
+gettext				       saytime
+gettextize			       scanimage
+gettext.sh			       schemagen
+gex				       sclient
+gfortran			       scp
+ghostscript			       screen
+gif2tiff			       script
+gij				       scriptreplay
+gindxbib			       scrollkeeper-config
+gio-querymodules-64		       scrollkeeper-extract
+git				       scrollkeeper-gen-seriesid
+git-receive-pack		       scrollkeeper-get-cl
+git-shell			       scrollkeeper-get-content-list
+git-upload-archive		       scrollkeeper-get-extended-content-list
+git-upload-pack			       scrollkeeper-get-index-from-docpath
+gjar				       scrollkeeper-get-toc-from-docpath
+gjarsigner			       scrollkeeper-get-toc-from-id
+gjavah				       scrollkeeper-install
+gkeytool			       scrollkeeper-preinstall
+glib-compile-schemas		       scrollkeeper-rebuilddb
+glookbib			       scrollkeeper-uninstall
+glxgears			       scrollkeeper-update
+glxinfo				       sdiff
+gmake				       sdptool
+gnat				       seahorse
+gnatbind			       seahorse-daemon
+gnatchop			       seaudit-report
+gnatclean			       sechecker
+gnatfind			       secon
+gnatgcc				       sediff
+gnatkr				       sedismod
+gnatlink			       sedispol
+gnatls				       seinfo
+gnatmake			       selfsign-getcert
+gnatname			       selinux-polgengui
+gnatprep			       semodule_deps
+gnatxref			       semodule_expand
+gneqn				       semodule_link
+gnome-about			       semodule_package
+gnome-about-me			       sendiso
+gnome-appearance-properties	       sepolgen
+gnome-at-properties		       sepolgen-ifgen
+gnome-at-visual			       sepolgen-ifgen-attr-helper
+gnome-audio-profiles-properties        seq
+gnome-calculator		       serialver
+gnome-character-map		       servertool
+gnome-default-applications-properties  serviceconf
+gnome-desktop-item-edit		       sesearch
+gnome-dictionary		       sessreg
+gnome-display-properties	       setarch
+gnome-file-share-properties	       setcifsacl
+gnome-font-viewer		       setfacl
+gnome-help			       setfattr
+gnome-keybinding-properties	       setkeycodes
+gnome-keyboard-properties	       setleds
+gnome-keyring			       setmetamode
+gnome-keyring-daemon		       setsid
+gnome-mouse-properties		       setterm
+gnome-network-properties	       setup
+gnome-open			       setup-nsssysinit.sh
+gnome-panel			       setxkbmap
+gnome-panel-screenshot		       sftp
+gnome-pilot-make-password	       sg
+gnome-power-bugreport.sh	       sgmlwhich
+gnome-power-manager		       sha1sum
+gnome-power-preferences		       sha224sum
+gnome-screensaver		       sha256sum
+gnome-screensaver-command	       sha384sum
+gnome-screensaver-preferences	       sha512sum
+gnome-screenshot		       shar
+gnome-search-tool		       sharesec
+gnome-session			       shasum
+gnome-session-properties	       show-changed-rco
+gnome-session-save		       showchar
+gnome-system-monitor		       showconsolefont
+gnome-terminal			       show-installed
+gnome-text-editor		       showkey
+gnome-thumbnail-font		       showrgb
+gnome-typing-monitor		       shred
+gnomevfs-cat			       shuf
+gnomevfs-copy			       signtool
+gnomevfs-df			       signver
+gnomevfs-info			       sim_client
+gnomevfs-ls			       sinjdoc
+gnomevfs-mkdir			       size
+gnomevfs-monitor		       skill
+gnomevfs-mv			       slabtop
+gnomevfs-rm			       sliceprint
+gnome-volume-control		       slogin
+gnome-volume-control-applet	       smbcacls
+gnome-wacom-properties		       smbclient
+gnome-wm			       smbcontrol
+gnote				       smbcquotas
+gnroff				       smbget
+gok				       smbpasswd
+gorbd				       smbprint
+gpasswd				       smbspool
+gpg				       smbtar
+gpg2				       smbta-util
+gpg-agent			       smbtree
+gpgconf				       smime_keys
+gpg-connect-agent		       smp_conf_general
+gpg-error			       smp_conf_route_info
+gpgkey2ssh			       smp_discover
+gpgparsemail			       smp_discover_list
+gpgsplit			       smp_phy_control
+gpgv				       smp_phy_test
+gpgv2				       smp_read_gpio
+gpg-zip				       smp_rep_exp_route_tbl
+gpic				       smp_rep_general
+gpilotd-control-applet		       smp_rep_manufacturer
+gpilotd-session-wrapper		       smp_rep_phy_err_log
+gpilot-install-file		       smp_rep_phy_sata
+gpk-application			       smp_rep_route_info
+gpk-install-catalog		       smp_write_gpio
+gpk-install-local-file		       sndfile-cmp
+gpk-install-mime-type		       sndfile-convert
+gpk-install-package-name	       sndfile-info
+gpk-install-provide-file	       sndfile-metadata-get
+gpk-log				       sndfile-metadata-set
+gpk-prefs			       sndfile-play
+gpk-repo			       sndfile-regtest
+gpk-update-icon			       sndfile-resample
+gpk-update-viewer		       snice
+gprof				       snmpconf
+grefer				       soelim
+grepdiff			       soffice
+grepjar				       sound-juicer
+grmic				       spamassassin
+grmid				       spamc
+grmiregistry			       spamd
+grn				       speaker-test
+grodvi				       spell
+groff				       splain
+groffer				       split
+grog				       splitdiff
+grolbp				       sprof
+grolj4				       sqlite3
+grops				       ssh
+grotty				       ssh-add
+groups				       ssh-agent
+growisofs			       ssh-copy-id
+gs				       ssh-keygen
+gsbj				       ssh-keyscan
+gsdj				       ssltap
+gsdj500				       sss_ssh_authorizedkeys
+gserialver			       sss_ssh_knownhostsproxy
+gslj				       stap
+gslp				       stap-merge
+gsnd				       stap-prep
+gsoelim				       stap-report
+gss-client			       staprun
+gssdp-device-sniffer		       stapsh
+gstack				       start-pulseaudio-x11
+gst-feedback			       startx
+gst-feedback-0.10		       stat
+gst-inspect			       states
+gst-inspect-0.10		       stdbuf
+gst-launch			       strace
+gst-launch-0.10			       strace-log-merge
+gst-typefind			       strings
+gst-typefind-0.10		       strip
+gst-xmlinspect			       stunbdc
+gst-xmlinspect-0.10		       stund
+gst-xmllaunch			       sudo
+gst-xmllaunch-0.10		       sudoedit
+gtbl				       sudoreplay
+gtf				       sum
+gthumb				       svn
+gthumb-importer			       svnadmin
+gtkhtml-editor-test		       svndumpfilter
+gtk-query-immodules-2.0-64	       svnlook
+gtk-update-icon-cache		       svnserve
+gtk-window-decorator		       svnsync
+gtnameserv			       svnversion
+gtroff				       swig
+gucharmap			       synclient
+gunzip				       syndaemon
+gupnp-binding-tool		       system-config-authentication
+gvfs-cat			       system-config-date
+gvfs-copy			       system-config-firewall
+gvfs-info			       system-config-firewall-tui
+gvfs-less			       system-config-kdump
+gvfs-ls				       system-config-keyboard
+gvfs-mkdir			       system-config-network
+gvfs-monitor-dir		       system-config-network-cmd
+gvfs-monitor-file		       system-config-printer
+gvfs-mount			       system-config-printer-applet
+gvfs-move			       system-config-selinux
+gvfs-open			       system-config-services
+gvfs-rename			       system-config-users
+gvfs-rm				       system-setup-keyboard
+gvfs-save			       tabs
+gvfs-set-attribute		       tac
+gvfs-trash			       tail
+gvfs-tree			       tailf
+gview				       tbl
+gvim				       tcamgr
+gvimdiff			       tcatest
+gvimtutor			       tcbmgr
+gzexe				       tcbmttest
+gzip				       tcbtest
+h2ph				       tcfmgr
+h2xs				       tcfmttest
+hal-device			       tcftest
+hal-disable-polling		       tchmgr
+hal-find-by-capability		       tchmttest
+hal-find-by-property		       tchtest
+hal-get-property		       tctmgr
+hal-is-caller-locked-out	       tctmttest
+hal-lock			       tcttest
+hal-probe-vmmouse		       tcucodec
+hal-set-property		       tcumttest
+hal-setup-keymap		       tcutest
+halt				       tee
+hcitool				       test
+head				       testlibraw
+HEAD				       testparm
+hexdump				       test_ppa
+host				       test-speech
+hostid				       text2wave
+hoststat			       tfmtodit
+hpcups-update-ppds		       tgz
+hpftodit			       thumbnail
+hpijs				       tic
+htdbm				       tiff2bw
+htdigest			       tiff2pdf
+htop				       tiff2ps
+htpasswd			       tiff2rgba
+hunspell			       tiffcmp
+i386				       tiffcp
+ibus-daemon			       tiffcrop
+ibus-setup			       tiffdither
+ibus-table-createdb		       tiffdump
+iceauth				       tiffinfo
+icedax				       tiffmedian
+iconv				       tiffset
+id				       tiffsplit
+ident				       time
+idevicebackup			       timeout
+idevice_id			       tload
+ideviceinfo			       tmpwatch
+idevicesyslog			       tnameserv
+idlj				       toc2cddb
+idn				       toc2cue
+iecset				       toe
+ifnames				       top
+igawk				       totem
+ijsgutenprint.5.2		       totem-audio-preview
+im-chooser			       totem-video-indexer
+imsettings-applet		       totem-video-thumbnailer
+imsettings-info			       tput
+imsettings-list			       tr
+imsettings-reload		       trace-cmd
+imsettings-restart		       troff
+imsettings-start		       truncate
+imsettings-stop			       tset
+imsettings-xim			       tsort
+indent				       ttmkfdir
+indexcon			       tty
+indxbib				       twm
+info				       tzselect
+infocmp				       ucs2any
+infokey				       udisks
+infotocap			       ul
+initdb				       ulockmgr_server
+innochecksum			       unexpand
+install				       uniq
+install-catalog			       unix-lpr.sh
+instmodsh			       unlzma
+interdiff			       unopkg
+intltool-extract		       unpack200
+intltoolize			       unprotoize
+intltool-merge			       unshar
+intltool-prepare		       unshare
+intltool-update			       unwrapdiff
+invest-chart			       unxz
+iok				       unzip
+ionice				       unzipsfx
+iostat				       update-ca-trust
+ipa-getcert			       updatedb
+ipcmk				       update-desktop-database
+ipcrm				       update-gdk-pixbuf-loaders
+ipcs				       update-gio-modules
+ipod-read-sysinfo-extended	       update-gtk-immodules
+iproxy				       update-mime-database
+iptc				       uptime
+isdv4-serial-debugger		       urlgrabber
+isodebug			       url_handler.sh
+isodump				       urlview
+isoinfo				       usb-devices
+iso-info			       usbhid-dump
+iso-read			       userformat
+isosize				       userinfo
+isovfy				       usermount
+ispell				       userpasswd
+isql				       users
+itweb-settings.itweb		       utmpdump
+iusql				       uuclient
+jar				       uudecode
+jarsigner			       uuencode
+java				       uuidgen
+javac				       uxterm
+javadoc				       uz
+javah				       vacuumdb
+javap				       valgrind
+javaws				       valgrind-listener
+javaws.itweb			       vdir
+jcf-dump			       vdltodmx
+jcmd				       verify_blkparse
+jconsole			       verifytree
+jdb				       vgdb
+jhat				       vim
+jinfo				       vimdiff
+jmap				       vimtutor
+join				       vimx
+jpegtran			       vino-passwd
+jps				       vino-preferences
+jrunscript			       vmmouse_detect
+jsadebugd			       vmstat
+jstack				       vm-support
+jstat				       vmware-config-tools.pl
+jstatd				       vmware-gksu
+jv-convert			       vmware-hgfsclient
+jvmjar				       vmware-toolbox
+k5srvutil			       vmware-toolbox-cmd
+kadmin				       vmware-uninstall-tools.pl
+kasumi				       vmware-user
+kbdrate				       vmware-user-wrapper
+kdestroy			       vmware-xferlogs
+keyrand				       vncconfig
+keytool				       vncpasswd
+keyutil				       vncserver
+kill				       vncts
+killall				       volname
+kinit				       vorbiscomment
+klist				       w
+koi8rxterm			       wall
+kpasswd				       watch
+krb5-config			       watchgnupg
+ksu				       wavpack
+kswitch				       wbinfo
+ktutil				       wc
+kvno				       wcmgr
+l2ping				       webalizer
+last				       webazolver
+lastb				       wftopfa
+lastcomm			       wget
+lastlog				       whatis
+latrace				       whereis
+latrace-ctl			       which
+lchfn				       whiptail
+lchsh				       who
+ld				       whoami
+ldd				       wnck-urgency-monitor
+ldns-chaos			       wodim
+ldns-compare-zones		       word-list-compress
+ldnsd				       write
+ldns-dane			       wrjpgcom
+ldns-dpa			       wsgen
+ldns-gen-zone			       wsimport
+ldns-key2ds			       wvgain
+ldns-keyfetcher			       wvunpack
+ldns-keygen			       X
+ldns-mx				       x0vncserver
+ldns-notify			       x11perf
+ldns-nsec3-hash			       x11perfcomp
+ldns-read-zone			       x86_64
+ldns-resolver			       x86_64-redhat-linux-c++
+ldns-revoke			       x86_64-redhat-linux-c++34
+ldns-rrsig			       x86_64-redhat-linux-g++
+ldns-signzone			       x86_64-redhat-linux-g++34
+ldns-test-edns			       x86_64-redhat-linux-gcc
+ldns-testns			       x86_64-redhat-linux-gcc34
+ldns-update			       xargs
+ldns-verify-zone		       xauth
+ldns-version			       xbiff
+ldns-walk			       xclipboard
+ldns-zcat			       xclock
+ldns-zsplit			       xconsole
+less				       xcursorgen
+lessecho			       xcutsel
+lesskey				       xdg-desktop-icon
+lesspipe.sh			       xdg-desktop-menu
+lex				       xdg-email
+libieee1284_test		       xdg-icon-resource
+libnetcfg			       xdg-mime
+libreoffice			       xdg-open
+libtar				       xdg-screensaver
+libtool				       xdg-settings
+libtoolize			       xdg-user-dir
+libwacom-list-local-devices	       xdg-user-dirs-gtk-update
+links				       xdg-user-dirs-update
+linux32				       xdm
+linux64				       xdmshell
+lkbib				       xdmx
+lm1100				       Xdmx
+loadunimap			       xdmxconfig
+locale				       xdpr
+localedef			       xdpyinfo
+local-getcert			       xdriinfo
+locate				       Xephyr
+lockfile			       xev
+logger				       xeyes
+logname				       xfd
+logresolve			       xfontsel
+look				       xgamma
+lookbib				       xgettext
+lp				       xhost
+lp.cups				       xinit
+lpoptions			       xinput
+lppasswd			       xjc
+lpq				       xkbbell
+lpq.cups			       xkbcomp
+lpr				       xkbevd
+lpr.cups			       xkbprint
+lprm				       xkbvleds
+lprm.cups			       xkbwatch
+lprsetup.sh			       xkill
+lp_solve			       xload
+lpstat				       xlogo
+lpstat.cups			       xlsatoms
+lsattr				       xlsclients
+lsb_release			       xlsfonts
+lscpu				       xmag
+lsdiff				       xmessage
+lshal				       xml2-config
+lslogins			       xmlcatalog
+lsusb				       xml_grep
+lsusb.py			       xmllint
+ltrace				       xml_merge
+lua				       xml_pp
+luac				       xml_spellcheck
+luit				       xml_split
+lwp-download			       xmlwf
+lwp-dump			       xmodmap
+lwp-mirror			       Xnest
+lwp-request			       Xorg
+lwp-rget			       xpr
+lz				       xprop
+lzcat				       xrandr
+lzcmp				       xrdb
+lzdiff				       xrefresh
+lzegrep				       xserver-sdk-abi-requires
+lzfgrep				       xset
+lzgrep				       xsetmode
+lzless				       xsetpointer
+lzma				       xsetroot
+lzmadec				       xsetwacom
+lzmainfo			       xsltproc
+lzmore				       xstdcmap
+m4				       xsubpp
+magnifier			       xterm
+Mail				       xulrunner
+mail-files			       xvattr
+mailq				       Xvfb
+mailq.postfix			       xvfb-run
+mailq.sendmail			       xvidtune
+mailshar			       xvinfo
+mailstat			       Xvnc
+make				       xwd
+makemap				       xwininfo
+mako-render			       xwud
+man				       xxd
+man2html			       xz
+manpath				       xzcat
+mapscrn				       xzcmp
+mattrib				       xzdec
+mbadblocks			       xzdiff
+mbchk				       xzegrep
+mcat				       xzfgrep
+mcd				       xzgrep
+mcheck				       xzless
+mclasserase			       xzmore
+mcomp				       yacc
+mcookie				       yelp
+mcopy				       yes
+mcpp				       ypcat
+md5sum				       ypchfn
+mdel				       ypchsh
+mdeltree			       ypmatch
+mdir				       yppasswd
+mdu				       ypwhich
+memhog				       yum
+merge				       yum-builddep
+mesg				       yum-config-manager
+metacity			       yum-debug-dump
+metacity-message		       yum-debug-restore
+metaflac			       yumdownloader
+mformat				       yum-groups-manager
+migratepages			       zcmp
+migspeed			       zdiff
+min12xxw			       zegrep
+minfo				       zenity
+mkafmmap			       zfgrep
+mkfifo				       zforce
+mkfontdir			       zgrep
+mkfontscale			       zip
+mkhybrid			       zipcloak
+mkisofs				       zipgrep
+mkmanifest			       zipinfo
+mkrfc2734			       zipnote
+mkxauth				       zipsplit
+mlabel				       zless
+mmc-tool			       zmore
+mmd				       znew
+mmount				       zsoelim
+mmove
+Child returned status: 0
+csc60mshell> cd
+csc60mshell> ll
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> ls
+adm  etc    include  lib64    local  sbin   src  X11R6
+bin  games  lib      libexec  pkg    share  tmp
+Child returned status: 0
+csc60mshell> find . -name foo1.txt
+find: `./lib64/audit': Permission denied
+ll
+Child returned status: 256
+csc60mshell> Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> wc fool1.txt
+wc: fool1.txt: No such file or directory
+Child returned status: 256
+csc60mshell> ll
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> ls
+adm  etc    include  lib64    local  sbin   src  X11R6
+bin  games  lib      libexec  pkg    share  tmp
+Child returned status: 0
+csc60mshell> /gaia/class/student/seguinte/CSC060/lab4
+Shell Program: Permission denied
+Child returned status: 65280
+csc60mshell> /gaia/class/student/seguinte/CSC060/lab4
+Shell Program: Permission denied
+Child returned status: 65280
+csc60mshell> cd /gaia/class/student/seguinte/CSC060/lab4
+csc60mshell> ls l
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> ls
+a.out	       final.txt  ls.c	    output.txt	typescript
+csc60mshell.c  foo1.txt   ls.out    out.txt
+csc60mshell.o  foo.txt	  makefile  test.txt
+Child returned status: 0
+csc60mshell> wc foo1,txt
+wc: foo1,txt: No such file or directory
+Child returned status: 256
+csc60mshell> f wc foo1.txt
+ 6  6 60 foo1.txt
+Child returned status: 0
+csc60mshell> pwd
+/gaia/class/student/seguinte/CSC060/lab4
+csc60mshell> c cat goo1.txt ls.out<out.tx        < out.tx
+Input: No such file or directory
+cat: goo1.txt: No such file or directory
+a.out
+csc60mshell.c
+csc60mshell.o
+final.txt
+foo1.txt
+foo.txt
+ls.c
+ls.out
+makefile
+output.txt
+out.txt
+test.txt
+typescript
+cat: <: No such file or directory
+cat: out.tx: No such file or directory
+Child returned status: 256
+csc60mshell> gcc -o ls.c   s ls.c -g
+Child returned status: 0
+csc60mshell> 
+csc60mshell> 
+csc60mshell> 
+csc60mshell> ll
+Shell Program: No such file or directory
+Child returned status: 65280
+csc60mshell> ls
+a.out	       csc60mshell.o  foo1.txt	ls    ls.out	output.txt  test.txt
+csc60mshell.c  final.txt      foo.txt	ls.c  makefile	out.txt     typescript
+Child returned status: 0
+csc60mshell> exit
+[seguinte@sp1:23]> quit
+quit: Command not found.
+[seguinte@sp1:24]> e[Kexit
+exit
+
+Script done on Wed 28 Oct 2015 11:19:20 PM PDT

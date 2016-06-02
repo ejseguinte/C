@@ -1,0 +1,7 @@
+  File: 'csc60_stat.c'
+  Size: 3860           Blocks: 8    IO Block: 524288 regular file
+ Device: 1ah/26d    Inode: 28085173    Links:   1
+ Access:  (100600/rw-------)   UID:(4876/seguinte)   GID:(4102/stdcsc)
+ Access:2015-09-25 20:29:45 -0700
+ Modify:2015-09-25 20:29:33 -0700
+ Change:2015-09-25 20:29:37 -0700
